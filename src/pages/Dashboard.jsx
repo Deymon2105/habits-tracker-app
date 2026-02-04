@@ -93,16 +93,17 @@ export default function Dashboard() {
         <h1 className="page-title-gradient-purple">
           Mis Semanas
         </h1>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <Button 
             onPress={() => setDeleteMode(!deleteMode)} 
             color={deleteMode ? "default" : "danger"} 
             variant={deleteMode ? "flat" : "light"}
             endContent={<Trash2 size={18} />}
+            className="w-full sm:w-auto"
           >
             {deleteMode ? 'Cancelar' : 'Eliminar Semana'}
           </Button>
-          <Button onPress={onOpen} color="primary" endContent={<Plus />}>
+          <Button onPress={onOpen} color="primary" endContent={<Plus />} className="w-full sm:w-auto">
             Nueva Semana
           </Button>
         </div>

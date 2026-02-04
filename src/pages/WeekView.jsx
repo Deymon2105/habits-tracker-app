@@ -56,12 +56,12 @@ export default function WeekView() {
   if (loading) return <LoadingSpinner />
 
   return (
-    <div className="space-y-6 animate-slide-up">
-      <div className="flex items-center gap-4">
+    <div className="space-y-4 sm:space-y-6 animate-slide-up">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
         <BackButton to="/" />
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{weekInfo?.name || 'Vista Semanal'}</h1>
-          <p className="text-default-500">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">{weekInfo?.name || 'Vista Semanal'}</h1>
+          <p className="text-sm sm:text-base text-default-500">
              {weekInfo && `${weekInfo.start_date} - ${weekInfo.end_date}`}
           </p>
         </div>

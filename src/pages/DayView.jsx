@@ -103,12 +103,12 @@ export default function DayView() {
   if (loading) return <LoadingSpinner />
 
   return (
-    <div className="max-w-3xl mx-auto space-y-8 animate-zoom-in">
+    <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6 md:space-y-8 animate-zoom-in">
       {/* Header */}
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
         <BackButton />
         <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-2">
             {day && (() => {
               const [y, m, d] = day.date.split('-').map(Number)
               const localDate = new Date(y, m - 1, d)
@@ -116,7 +116,7 @@ export default function DayView() {
             })()}
             {progress === 100 && totalHabits > 0 && <CheckCircle2 className="text-green-500 animate-bounce" />}
           </h1>
-          <p className="text-default-500">Gestiona tus tareas diarias</p>
+          <p className="text-sm sm:text-base text-default-500">Gestiona tus tareas diarias</p>
         </div>
       </div>
 
@@ -143,7 +143,7 @@ export default function DayView() {
       </Card>
 
       {/* Add Habit */}
-      <form onSubmit={addHabit} className="flex gap-2">
+      <form onSubmit={addHabit} className="flex flex-col sm:flex-row gap-2">
         <Input 
           placeholder="Escribe un nuevo hábito..." 
           value={newHabit}
@@ -152,16 +152,16 @@ export default function DayView() {
           size="lg"
           startContent={<Plus className="text-default-400" />}
         />
-        <Button type="submit" color="primary" size="lg" isLoading={addLoading} isIconOnly={false}>
+        <Button type="submit" color="primary" size="lg" isLoading={addLoading} isIconOnly={false} className="w-full sm:w-auto">
           Añadir
         </Button>
       </form>
 
       {/* Habits List */}
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {habits.map((habit) => (
           <Card key={habit.id} className="group hover:shadow-md transition-shadow">
-            <CardBody className="flex flex-row items-center gap-4 py-3">
+            <CardBody className="flex flex-row items-center gap-2 sm:gap-4 py-3 px-3 sm:px-4">
               <Checkbox 
                 isSelected={habit.is_done} 
                 onValueChange={() => toggleHabit(habit.id, habit.is_done)}
@@ -190,14 +190,14 @@ export default function DayView() {
                 )}
               </div>
 
-              <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex gap-1 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
                 {editingId !== habit.id && (
                   <>
                     <Button isIconOnly size="sm" variant="light" onPress={() => startEditing(habit)}>
-                      <Edit2 size={18} className="text-default-600" />
+                      <Edit2 size={16} sm:size={18} className="text-default-600" />
                     </Button>
                     <Button isIconOnly size="sm" variant="light" color="danger" onPress={() => deleteHabit(habit.id)}>
-                      <Trash2 size={18} />
+                      <Trash2 size={16} sm:size={18} />
                     </Button>
                   </>
                 )}
