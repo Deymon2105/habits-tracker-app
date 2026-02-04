@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+
+@layer base {
+  body {
+    @apply bg-background text-foreground min-h-screen font-sans;
+  }
+}
+
+@layer components {
+  /* Layout Containers */
+  .layout-container {
+    @apply min-h-screen flex flex-col;
+  }
+
+  .main-content {
+    @apply container mx-auto p-4 max-w-5xl flex-grow;
+  }
+
+  /* Headers & Typography */
+  .app-header {
+    @apply p-4 border-b border-divider flex justify-between items-center bg-background/80 shadow-sm sticky top-0 z-50 backdrop-blur-md;
+  }
+
+  .logo-text {
+    @apply text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity;
+  }
+
+  .page-title {
+    @apply text-3xl font-bold;
+  }
+
+  .page-title-gradient-purple {
+    @apply text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent;
+  }
+
+  .page-header-container {
+    @apply flex justify-between items-center mb-8;
+  }
+
+  /* Cards */
+  .card-actionable {
+    @apply hover:scale-[1.02] transition-transform cursor-pointer hover:shadow-md;
+  }
+
+  .card-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .card-grid-tight {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4;
+  }
+
+  .week-card-active {
+    @apply border-l-4 border-green-500 shadow-md;
+  }
+
+  /* Animations */
+  .animate-page-enter {
+    @apply animate-in fade-in duration-500;
+  }
+
+  .animate-slide-up {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500;
+  }
+  
+  .animate-zoom-in {
+    @apply animate-in fade-in zoom-in-95 duration-300;
+  }
+}
